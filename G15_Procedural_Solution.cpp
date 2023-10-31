@@ -81,10 +81,11 @@ void draw( Circle const& circle );
 //#include <Circle.h>
 //#include <DrawCircle.h>
 //#include /* some graphics library */
-
+#include <iostream>
 void draw( Circle const& circle )
 {
    // ... Implementing the logic for drawing a circle
+   std::cout << "Drawing a circle\n";
 }
 
 
@@ -128,6 +129,7 @@ void draw( Square const& square );
 void draw( Square const& square )
 {
    // ... Implementing the logic for drawing a square
+   std::cout << "Drawing a square\n";
 }
 
 
@@ -145,20 +147,31 @@ void drawAllShapes( std::vector<std::unique_ptr<Shape>> const& shapes );
 //#include <DrawAllShapes.h>
 //#include <Circle.h>
 //#include <Square.h>
+void drawShape(const Shape &shape) {
+   switch (shape.getType()) {
+      case circle:
+         draw(static_cast<Circle const&>(shape));
+         break;
+      case square:
+         draw(static_cast<Square const&>(shape));
+         break;
+   }
+}
 
 void drawAllShapes( std::vector<std::unique_ptr<Shape>> const& shapes )
 {
    for( auto const& shape : shapes )
    {
-      switch( shape->getType() )
-      {
-         case circle:
-            draw( static_cast<Circle const&>( *shape ) );
-            break;
-         case square:
-            draw( static_cast<Square const&>( *shape ) );
-            break;
-      }
+      // switch( shape->getType() )
+      // {
+      //    case circle:
+      //       draw( static_cast<Circle const&>( *shape ) );
+      //       break;
+      //    case square:
+      //       draw( static_cast<Square const&>( *shape ) );
+      //       break;
+      // }
+      drawShape(*shape);
    }
 }
 
@@ -187,4 +200,3 @@ int main()
 
    return EXIT_SUCCESS;
 }
-

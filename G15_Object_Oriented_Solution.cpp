@@ -62,10 +62,12 @@ class Circle : public Shape
 
 //#include <Circle.h>
 //#include /* some graphics library */
+#include <iostream>
 
 void Circle::draw() const
 {
    // ... Implementing the logic for drawing a circle
+   std::cout << "drawing circle.\n";
 }
 
 
@@ -102,6 +104,7 @@ class Square : public Shape
 void Square::draw() const
 {
    // ... Implementing the logic for drawing a square
+   std::cout << "drawing square.\n";
 }
 
 

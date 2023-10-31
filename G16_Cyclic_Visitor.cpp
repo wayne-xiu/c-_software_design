@@ -88,6 +88,7 @@ class Square : public Shape
 //#include <Circle.h>
 //#include <ShapeVisitor.h>
 //#include <Square.h>
+#include <iostream>
 
 class Draw : public ShapeVisitor
 {
@@ -95,11 +96,13 @@ class Draw : public ShapeVisitor
    void visit( Circle const& c /*, ...*/ ) const override
    {
       // ... Implementing the logic for drawing a circle
+      std::cout << "drawing circle by visitor.\n";
    }
 
    void visit( Square const& s /*, ...*/ ) const override
    {
       // ... Implementing the logic for drawing a square
+      std::cout << "drawing square by visitor.\n";
    }
 
    // Possibly more visit() functions, one for each concrete shape
@@ -155,4 +158,3 @@ int main()
 
    return EXIT_SUCCESS;
 }
-
