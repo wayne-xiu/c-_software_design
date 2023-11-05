@@ -86,6 +86,7 @@ using Shapes = std::vector<Shape>;
 //#include <Circle.h>
 //#include <Square.h>
 //#include /* some graphics library */
+#include <iostream>
 
 class Draw
 {
@@ -93,10 +94,12 @@ class Draw
    void operator()( Circle const& c ) const
    {
       /* ... Implementing the logic for drawing a circle ... */
+      std::cout << "drawing a circle from Draw functor\n";
    }
    void operator()( Square const& s ) const
    {
       /* ... Implementing the logic for drawing a square ... */
+      std::cout << "drawing a square from Draw functor\n";
    }
 };
 
@@ -142,4 +145,3 @@ int main()
 
    return EXIT_SUCCESS;
 }
-
