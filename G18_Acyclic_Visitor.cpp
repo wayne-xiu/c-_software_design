@@ -106,6 +106,7 @@ class Square : public Shape
 //#include <Visitor.h>
 //#include <Circle.h>
 //#include <Square.h>
+#include <iostream>
 
 class Draw : public AbstractVisitor
            , public Visitor<Circle>
@@ -113,9 +114,13 @@ class Draw : public AbstractVisitor
 {
  public:
    void visit( Circle const& c ) const override
-      { /* ... Implementing the logic for drawing a circle ... */ }
+      { /* ... Implementing the logic for drawing a circle ... */
+         std::cout << "drawing circle in a confusing multiple inheritance hierarchy\n";
+      }
    void visit( Square const& s ) const override
-      { /* ... Implementing the logic for drawing a square ... */ }
+      { /* ... Implementing the logic for drawing a square ... */
+         std::cout << "drawing square in a confusing multiple inheritance hierarchy\n";
+      }
 };
 
 
