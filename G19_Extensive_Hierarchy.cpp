@@ -49,6 +49,8 @@ class Circle : public Shape
    Point  center() const { return center_; }
 
    // ... No implementation of the draw() member function anymore
+   // note that Circle is also abstract class and cannot be inistantiated directly since
+   // it doesn't implement draw; the same applies to the Square class below
 
  private:
    double radius_;
@@ -75,10 +77,12 @@ class OpenGLCircle : public Circle
 
 //#include <OpenGLCircle.h>
 //#include /* OpenGL graphics library headers */
+#include <iostream>
 
 void OpenGLCircle::draw( /*some arguments*/ ) const
 {
    // ... Implementing the logic for drawing a circle by means of OpenGL
+   std::cout << "drawing circle in OpenGL\n";
 }
 
 
@@ -130,6 +134,7 @@ class OpenGLSquare : public Square
 void OpenGLSquare::draw( /*some arguments*/ ) const
 {
    // ... Implementing the logic for drawing a square by means of OpenGL
+   std::cout << "drawing square in OpenGL\n";
 }
 
 

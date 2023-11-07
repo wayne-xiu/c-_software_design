@@ -40,6 +40,7 @@ class DrawStrategy
 #include <memory>
 #include <utility>
 
+// ok, but each shape has to be equipped with a drawing strategy when constructed, tedious?
 class Circle : public Shape
 {
  public:
@@ -127,7 +128,9 @@ void drawAllShapes( std::vector<std::unique_ptr<Shape>> const& shapes )
 //#include <Circle.h>
 //#include <DrawStrategy.h>
 //#include /* OpenGL graphics library */
+#include <iostream>
 
+// using template to create an abstract class which is inherited by the concrete strategy
 class OpenGLCircleStrategy : public DrawStrategy<Circle>
 {
  public:
@@ -137,6 +140,7 @@ class OpenGLCircleStrategy : public DrawStrategy<Circle>
    void draw( Circle const& circle /*, ...*/ ) const override
    {
       // ... Implementing the logic for drawing a circle by means of OpenGL
+      std::cout << "drawing circle in OpenGL as a injected strategy\n";
    }
 
  private:
@@ -159,6 +163,7 @@ class OpenGLSquareStrategy : public DrawStrategy<Square>
    void draw( Square const& square /*, ...*/ ) const override
    {
       // ... Implementing the logic for drawing a square by means of OpenGL
+      std::cout << "drawing square in OpenGL as a injected strategy\n";
    }
 
  private:
