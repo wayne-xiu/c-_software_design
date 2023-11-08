@@ -38,6 +38,8 @@ int main()
    // Prints ( 1 2 99 4 );
    print( s );
 
+   // std::span is a non-owning reference to a sequence (an array or a part of it).
+   // it's essentially a [pointer, size] pair, which views the data
    v = { 5, 6, 7, 8, 9 };
    s[2] = 99;  // Works!
 

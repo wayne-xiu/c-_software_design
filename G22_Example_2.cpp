@@ -32,6 +32,7 @@ int main()
 
    auto const pos = std::max_element( begin(vec), end(vec) );
 
+   // man, I can never remember the erase-remove idiom after all these years...
    vec.erase( std::remove( begin(vec), end(vec), *pos ), end(vec) );
 
    print( vec );
