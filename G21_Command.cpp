@@ -133,6 +133,7 @@ void Calculator::clear()
 #include <cstdlib>
 #include <memory>
 #include <utility>
+#include <iostream>
 
 int main()
 {
@@ -154,6 +155,7 @@ int main()
    int const res = calculator.result();  // Get the final result: 6
 
    // ...
+   std::cout << "final result: " << res << std::endl;
 
    return EXIT_SUCCESS;
 }
