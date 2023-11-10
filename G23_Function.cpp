@@ -20,6 +20,19 @@ void foo( int i )
    std::cout << "foo: " << i << '\n';
 }
 
+class Callable {
+   public:
+      Callable( std::function<void(int)> callback )
+         : callback_( std::move(callback) )
+      {}
+
+      void operator()( int i ) const {
+         callback_(i);
+      }
+   private:
+      std::function<void(int)> callback_;
+};
+
 int main()
 {
    // Create a default std::function instance. Calling it results
@@ -38,6 +51,9 @@ int main()
 
    f(2);  // Calling 'f' with the integer '2'
    g(3);  // Calling 'g' with the integer '3'
+
+   Callable callable(g);
+   callable(4);
 
    return EXIT_SUCCESS;
 }
