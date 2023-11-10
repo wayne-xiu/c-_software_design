@@ -89,6 +89,7 @@ class Square : public Shape
 
 //#include <Circle.h>
 //#include /* OpenGL graphics library */
+#include <iostream>
 
 class OpenGLCircleStrategy
 {
@@ -99,6 +100,7 @@ class OpenGLCircleStrategy
    void operator()( Circle const& circle /*, ...*/ ) const
    {
       // ... Implementing the logic for drawing a circle by means of OpenGL
+      std::cout << "drawing circle in OpenGL functor\n";
    }
 
  private:
@@ -120,6 +122,7 @@ class OpenGLSquareStrategy
    void operator()( Square const& square /*, ...*/ ) const
    {
       // ... Implementing the logic for drawing a square by means of OpenGL
+      std::cout << "drawing square in OpenGL functor\n";
    }
 
  private:
@@ -144,6 +147,9 @@ int main()
 
    // Creating some shapes, each one
    //   equipped with the according OpenGL drawing strategy
+   // note that: Circle and Square are constructed with a functor, which is compatible with the
+   // std::function;
+   // note that we don't needs a DrawStrategy abstrct class anymore
    shapes.emplace_back(
       std::make_unique<Circle>( 2.3, OpenGLCircleStrategy(/*...red...*/) ) );
    shapes.emplace_back(
