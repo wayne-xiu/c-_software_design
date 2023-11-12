@@ -197,7 +197,7 @@ int main()
 
    // Detaching observers
    homer.detach( &nameObserver );
-   homer.surname( "Lee" );  // Adding his middle name
+   homer.surname( "Lee" );  // no longer observed
 
    return EXIT_SUCCESS;
 }
