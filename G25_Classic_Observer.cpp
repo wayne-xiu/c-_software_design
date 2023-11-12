@@ -128,6 +128,7 @@ class NameObserver : public Observer<Person,Person::StateChange>
 //---- <NameObserver.cpp> ----------------
 
 //#include <NameObserver.h>
+#include <iostream>
 
 void NameObserver::update( Person const& person, Person::StateChange property )
 {
@@ -135,6 +136,7 @@ void NameObserver::update( Person const& person, Person::StateChange property )
        property == Person::surnameChanged )
    {
       // ... Respond to changed name
+      std::cout << "observed name change \n";
    }
 }
 
@@ -158,6 +160,7 @@ void AddressObserver::update( Person const& person, Person::StateChange property
 {
    if( property == Person::addressChanged ) {
       // ... Respond to changed address
+      std::cout << "observed address change \n";
    }
 }
 
@@ -194,6 +197,7 @@ int main()
 
    // Detaching observers
    homer.detach( &nameObserver );
+   homer.surname( "Lee" );  // Adding his middle name
 
    return EXIT_SUCCESS;
 }
