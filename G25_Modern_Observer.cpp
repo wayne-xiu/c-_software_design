@@ -19,8 +19,11 @@ template< typename Subject, typename StateTag >
 class Observer
 {
  public:
-   using OnUpdate = std::function<void(Subject const&,StateTag)>;
-
+   using OnUpdate = std::function<void(Subject const&, StateTag)>;
+   // for comparison: classic observer
+   // virtual void update( Subject const& subject, StateTag property ) = 0;
+   // this is similar to the C# event handler
+   
    // No virtual destructor necessary
 
    explicit Observer( OnUpdate onUpdate )
@@ -135,6 +138,7 @@ void Person::notify( StateChange property )
 //#include <Observer.h>
 //#include <Person.h>
 #include <cstdlib>
+#include <iostream>
 
 void propertyChanged( Person const& person, Person::StateChange property )
 {
@@ -142,6 +146,7 @@ void propertyChanged( Person const& person, Person::StateChange property )
        property == Person::surnameChanged )
    {
       // ... Respond to changed name
+      std::cout << "name changed " << "notified by a free function\n";
    }
 }
 
@@ -156,6 +161,7 @@ int main()
          if( property == Person::addressChanged )
          {
             // ... Respond to changed address
+            std::cout << "address changed " << "notified by a lambda\n";
          }
       } );
 
@@ -169,6 +175,9 @@ int main()
    monty.attach( &addressObserver );
 
    // ...
+   homer.forename( "Homer Jay" );
+   marge.address( "742 Evergreen Terrace" );
+   monty.address( "1000 Mammon Lane" );
 
    return EXIT_SUCCESS;
 }
