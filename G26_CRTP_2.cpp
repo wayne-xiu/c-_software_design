@@ -28,6 +28,7 @@ struct IsDenseVector
 template< typename T >
 constexpr bool IsDenseVector_v = IsDenseVector<T>::value;
 
+// any specializated T that meets these 3 requirements is a DenseVector
 template< typename T >
 concept DenseVector =
    requires ( T t, size_t index ) {
@@ -72,6 +73,7 @@ decltype(auto) l2norm( VectorT const& vector )
 #include <vector>
 #include <initializer_list>
 
+// DynamicVector is a DenseVector by inheritance
 template< typename T >
 class DynamicVector : private DenseVectorTag
 {
@@ -108,6 +110,7 @@ class DynamicVector : private DenseVectorTag
 #include <array>
 #include <initializer_list>
 
+// StaticVector is a DenseVector by definition (std::true_type for the DenseVectorTag)
 template< typename T, size_t Size >
 class StaticVector
 {
