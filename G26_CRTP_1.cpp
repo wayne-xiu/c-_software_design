@@ -63,6 +63,8 @@ decltype(auto) l2norm( DenseVector<Derived> const& vector )
 #include <vector>
 #include <initializer_list>
 
+// note: CRTP: curiously recurring template pattern, where a class is derived from from a base class template
+// with itself (the derived class) as the template argument. This is used to implement static polymorphism
 template< typename T >
 class DynamicVector
    : public DenseVector< DynamicVector<T> >
