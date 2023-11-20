@@ -10,6 +10,8 @@
 *
 **************************************************************************************************/
 
+// this code is terrible, do normal people actually write code like this? user-defined literals are
+// even easier
 
 //---- <Addable.h> --------------------------------------------------------------------------------
 
