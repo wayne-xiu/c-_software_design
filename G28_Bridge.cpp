@@ -53,7 +53,7 @@ class Car
 
    // ... more car-specific data members (wheels, drivetrain, ...)
 };
-
+// note: the above pimpl removes the dependencies between abstraction and implementations
 
 //---- <ElectricEngine.h> -------------------------------------------------------------------------
 
