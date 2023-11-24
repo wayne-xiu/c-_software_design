@@ -14,6 +14,8 @@ project(CppSoftwareDesign CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 
+find_package(benchmark REQUIRED)
+
 add_executable(G15_Procedural_Solution
    G15_Procedural_Solution.cpp
    )
@@ -93,6 +95,12 @@ add_executable(G28_Bridge
 add_executable(G28_Pimpl
    G28_Pimpl.cpp
    )
+
+add_executable(G29_Bridge_Performacne
+   G29_Bridge_Performance.cpp
+   )
+target_link_libraries(G29_Bridge_Performacne PRIVATE benchmark::benchmark)
+
 
 add_executable(G30_Prototype
    G30_Prototype.cpp

@@ -20,6 +20,7 @@
 #include <string>
 #include <vector>
 
+#include <benchmark/benchmark.h>
 
 //---- Benchmark configuration --------------------------------------------------------------------
 
@@ -36,12 +37,12 @@ constexpr size_t iterations( 10 );  // Number of benchmark iterations
 std::random_device rd{};
 const unsigned int seed( rd() );
 
-std::mt19937 rng{};
+std::mt19937 rng{seed};
 std::uniform_int_distribution<int> dist( 1957, 2004 );
 
 int get_random_year_of_birth()
 {
-   return dist( rd );
+   return dist( rng );
 }
 
 
@@ -149,3 +150,4 @@ static void determineOldestPerson3(benchmark::State& state)
 BENCHMARK(determineOldestPerson3)->Iterations(iterations);
 #endif
 
+BENCHMARK_MAIN();
