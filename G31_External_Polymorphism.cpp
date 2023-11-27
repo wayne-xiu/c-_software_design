@@ -91,6 +91,7 @@ class ShapeModel : public ShapeConcept
 //#include <Circle.h>
 //#include <Square.h>
 //#include /* OpenGL graphics library headers */
+#include <iostream>
 
 class OpenGLDrawStrategy
 {
@@ -101,10 +102,12 @@ class OpenGLDrawStrategy
    void operator()( Circle const& circle ) const
    {
       // ... Implementing the logic for drawing a circle by means of OpenGL
+      std::cout << "drawing a circle using OpenGL\n";
    }
    void operator()( Square const& square ) const
    {
       // ... Implementing the logic for drawing a square by means of OpenGL
+      std::cout << "drawing a square using OpenGL\n";
    }
 
  private:
@@ -150,4 +153,3 @@ int main()
 
    return EXIT_SUCCESS;
 }
-
