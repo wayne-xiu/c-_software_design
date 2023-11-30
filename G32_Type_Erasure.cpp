@@ -91,7 +91,7 @@ class Shape
 {
  public:
    template< typename ShapeT
-           , typename DrawStrategy >
+           , typename DrawStrategy >  // template constructor
    Shape( ShapeT shape, DrawStrategy drawer )
    {
       using Model = detail::OwningShapeModel<ShapeT,DrawStrategy>;
