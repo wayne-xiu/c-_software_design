@@ -136,6 +136,7 @@ class Shape
 //#include <Square.h>
 //#include <Shape.h>
 #include <cstdlib>
+#include <iostream>
 
 int main()
 {
@@ -143,7 +144,7 @@ int main()
    Circle circle{ 3.14 };
 
    // Create a drawing strategy in form of a lambda
-   auto drawer = []( Circle const& c ){ /*...*/ };
+   auto drawer = []( Circle const& c ){ std::cout << "Drawing a circle\n"; };
 
    // Combine the shape and the drawing strategy in a 'Shape' abstraction
    // This constructor call will instantiate a 'detail::OwningShapeModel' for
